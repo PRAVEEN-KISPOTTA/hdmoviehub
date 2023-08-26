@@ -52,8 +52,8 @@ class Moviecard extends React.Component{
     render(){
 
         // console.log(this.props.movies)
-        const {title, plot, price, rating, stars, fav, cart} = this.props.moviesProps;
-        const {addStar, removeStar, moviesProps, favHandler, cartHandler} = this.props;
+        const {title, plot, price, rating, stars, fav, cart} = this.props.movies;
+        const {addStar, removeStar, movies, favHandler, cartHandler} = this.props;
         return(
             <>
             <div className="main-container">
@@ -74,7 +74,7 @@ class Moviecard extends React.Component{
                                         className="btn minus-btn" 
                                         alt="" 
                                         src="https://cdn-icons-png.flaticon.com/128/10238/10238606.png"
-                                        onClick={()=>{removeStar(moviesProps)}}
+                                        onClick={()=>{removeStar(movies)}}
                                         />
 
                                    <span className="star-rating">{stars}</span>
@@ -83,15 +83,15 @@ class Moviecard extends React.Component{
                                         className="btn plus-btn" 
                                         alt="" 
                                         src="https://cdn-icons-png.flaticon.com/128/1828/1828817.png" 
-                                        onClick={() => {addStar(moviesProps)}}
+                                        onClick={() => {addStar(movies)}}
                                         />
                                 </div>
                             </span>
                         </div>
                         <div className="btn-section">
-                            {(fav) ? <button className="fav-btn" onClick={()=>{favHandler(moviesProps)}}>Favourite</button> : <button className="fav-btn" onClick={()=> {favHandler(moviesProps)}}>Un-favourite</button>}
+                            {(fav) ? <button className="fav-btn" onClick={()=>{favHandler(movies)}}>Favourite</button> : <button className="fav-btn" onClick={()=> {favHandler(movies)}}>Un-favourite</button>}
                             
-                            {!cart ? <button className="buy-btn" onClick={()=>{cartHandler(moviesProps)}}>Buy Now</button> : <button className="buy-btn" onClick={()=>{cartHandler(moviesProps)}}>Remove</button>}
+                            {!cart ? <button className="buy-btn" onClick={()=>{cartHandler(movies)}}>Buy Now</button> : <button className="buy-btn" onClick={()=>{cartHandler(movies)}}>Remove</button>}
                         </div>
                     </div>
                 </div>
