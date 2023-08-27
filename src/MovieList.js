@@ -3,7 +3,6 @@ import Moviecard from "./Moviecard";
 
 class MovieList extends Component{
 
-    
     render(){
         // const {title, plot, price, rating, stars, fav, cart} = this.state;
         // console.log("inside movieList = ", this.state.movies[1])

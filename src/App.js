@@ -2,73 +2,84 @@ import React from "react";
 import MovieList from "./MovieList";
 import NavBar from "./NavBar";
 import Student from "./Student";
-import {movies} from "./MoviesData";
+import {moviesData} from "./MoviesData";
 
 class App extends React.Component{
   constructor(){
     super();
     this.state = {
-        movies: movies
+        movie: moviesData,
+        cartCount: 0
     }
     // this.AddStar = this.AddStar.bind(this);
 }
 
 addHandler = (movieRef) => {
-    const {movies} = this.state;
-    const movieId = movies.indexOf(movieRef);
-    console.log(movies[movieId]);
+    const {movie} = this.state;
+    const movieId = movie.indexOf(movieRef);
+    console.log(movie[movieId]);
 
-    if(movies[movieId].stars >= 5){
+    if(movie[movieId].stars >= 5){
         return;
     }
-    movies[movieId].stars += 0.5;
+    movie[movieId].stars += 0.5;
     this.setState({
-        movies: movies
+        movie: movie
     })
   };
 
   removeHandler =(movieRef) =>{
-    const {movies} = this.state;
-    const movieId = movies.indexOf(movieRef);
+    const {movie} = this.state;
+    const movieId = movie.indexOf(movieRef);
 
-    if(movies[movieId].stars <= 0){
+    if(movie[movieId].stars <= 0){
         return;
     }
-    movies[movieId].stars -= 0.5;
+    movie[movieId].stars -= 0.5;
     this.setState({
-        movies: movies
+        movies: movie
     })
   }
 
   handleFav = (movieRef)=>{
-    const {movies} = this.state;
-    const movieId = this.state.movies.indexOf(movieRef);
+    const {movie} = this.state;
+    const movieId = this.state.movie.indexOf(movieRef);
     // console.log("t")
-    movies[movieId].fav =  !this.state.movies[movieId].fav;
+    movie[movieId].fav =  !this.state.movie[movieId].fav;
     this.setState({
-        movies: movies
+        movie: movie
     });
   }
 
   handleCart=(movieRef)=>{
-    const {movies} = this.state;
-    const movieId = this.state.movies.indexOf(movieRef);
+    const {movie} = this.state;
+    const movieId = this.state.movie.indexOf(movieRef);
 
-    movies[movieId].cart = !movies[movieId].cart;
+    movie[movieId].cart = !movie[movieId].cart;
 
-    this.setState({
-        movies: movies,
-        cartCount: 0
+    // this.setState({
+    //     movie: movie,
+    //     cartCount: 0
+    // })
+
+    // (movie[movieId].cart) ? console.log(1) : console.log(-1)
+
+    this.setState((prevState)=>({
+      movie: movie,
+      cartCount: prevState.cartCount + (movie[movieId].cart ? 1 : -1)
+    }), ()=>{
+      console.log(this.state.cartCount)
     })
+
   }
 
   render(){
-    const {movies} = this.state;
+    const {movie, cartCount} = this.state;
     return(
         <>
     
-        <NavBar/>
-        <MovieList moviesProps={movies}
+        <NavBar cartCountHandler={cartCount}/>
+        <MovieList moviesProps={movie}
                     addStarProps={this.addHandler}
                     removeStarProps={this.removeHandler}
                     favHandlerProps={this.handleFav}

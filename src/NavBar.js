@@ -10,10 +10,11 @@ class NavBar extends Component{
                 <h1><span className="heading-left-section">Hd</span><span className="heading-mid-section">Movie</span><span className="heading-right-section">Hub</span></h1>
 
                 <div className="navBarCartContainer">
-                    <CartCount className="navBarCartCount" color="yellow" show={"true"}>0</CartCount>
+                    <CartCount className="navBarCartCount" color="yellow" show={"true"}>{this.props.cartCountHandler}</CartCount>
                     <NavBarCart className="navBarCart" src="https://cdn-icons-png.flaticon.com/128/3737/3737372.png" alt="" />
                     
                 </div>
+                {/* {console.log("count=", this.props.cartCountHandler)} */}
             </Container>
             </>
         )

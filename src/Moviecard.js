@@ -58,7 +58,7 @@ class Moviecard extends React.Component{
             <>
             <div className="main-container">
                 <div className="left-container">
-                    <img src="https://www.themoviedb.org/t/p/original/qMxAmzGQO722q0UlssCOPhrXmvX.jpg" alt="Poster" />
+                    <img src={movies.image} alt="Poster" />
                 </div>
                 <div className="right-container">
                     <div className="title-section">{title}</div>
