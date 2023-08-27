@@ -52,7 +52,7 @@ addHandler = (movieRef) => {
   }
 
   handleCart=(movieRef)=>{
-    const {movie} = this.state;
+    let {movie, cartCount} = this.state;
     const movieId = this.state.movie.indexOf(movieRef);
 
     movie[movieId].cart = !movie[movieId].cart;
@@ -64,11 +64,16 @@ addHandler = (movieRef) => {
 
     // (movie[movieId].cart) ? console.log(1) : console.log(-1)
 
-    this.setState((prevState)=>({
+    if(movie[movieId].cart){
+      cartCount += 1;
+    }
+    else{
+      cartCount -= 1;
+    }
+
+    this.setState({
       movie: movie,
-      cartCount: prevState.cartCount + (movie[movieId].cart ? 1 : -1)
-    }), ()=>{
-      console.log(this.state.cartCount)
+      cartCount: cartCount
     })
 
   }
