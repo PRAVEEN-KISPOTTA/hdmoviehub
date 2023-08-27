@@ -96,20 +96,3 @@ addHandler = (movieRef) => {
 }
 
 export default App;
-
-
-// import MovieList from "./MovieList";
-// import NavBar from "./NavBar";
-// import Student from "./Student";
-// function App(){
-//   return(
-//     <>
-    
-//     <NavBar/>
-//     <MovieList />
-//     <Student name="Praveen Kispotta" marks={78} />
-//     </>
-//   )
-// }
-
-// export default App;
